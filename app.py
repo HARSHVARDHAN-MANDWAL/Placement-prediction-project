@@ -2,7 +2,12 @@ import streamlit as st
 import joblib
 import pandas as pd
 
-model = joblib.load('placement-prediction_model.pkl')
+import os
+
+if not os.path.exists('placement-prediction_model.pkl'):
+    st.error("Model file not found!")
+else:
+    model = joblib.load('placement-prediction_model.pkl')
 
 st.set_page_config(page_title="Placement Prediction System", layout="centered")
 
